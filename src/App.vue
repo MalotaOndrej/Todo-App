@@ -2,13 +2,18 @@
   <h1>To Do App</h1>
   <form @submit.prevent="addNewTodo">
     <label>Todo</label>
-    <input v-model="newTodo" name="newTodo" placeholder="What?..." />
+    <input
+      v-model="newTodo"
+      name="newTodo"
+      placeholder="What?..."
+      style="border-bottom: #1a1a1a 2px solid"
+    />
     <button>ADD</button>
   </form>
   <ul v-for="(todo, index) in todos" :key="todo.id">
     <li class="todo">
       <input type="checkbox" v-model="todo.done" class="checkbox" />
-      <h5 :class="{ done: todo.done }">{{ todo.content }}</h5>
+      <input type="text" :class="{ done: todo.done }" v-model="todo.content" />
       <button class="delete" @click="deleteTodo(index)">delete</button>
     </li>
   </ul>
@@ -60,6 +65,8 @@ export default {
 <style scoped>
 input {
   margin: 0 5px;
+  border: none;
+  background-color: transparent;
 }
 
 .delete {
